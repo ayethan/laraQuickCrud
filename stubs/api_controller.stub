@@ -1,0 +1,70 @@
+<?php
+
+namespace {{namespace}};
+
+use {{modelNamespace}}\{{modelName}};
+use Illuminate\Http\Request;
+use {{requestNamespace}}\{{modelName}}StoreRequest;
+use {{requestNamespace}}\{{modelName}}UpdateRequest;
+
+class {{modelName}}ApiController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        ${{modelNamePluralLowercase}} = {{modelName}}::latest()->paginate(10);
+        return response()->json(${{modelNamePluralLowercase}});
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \{{requestNamespace}}\{{modelName}}StoreRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store({{modelName}}StoreRequest $request)
+    {
+        ${{modelNameSingularLowercase}} = {{modelName}}::create($request->validated());
+        return response()->json(${{modelNameSingularLowercase}}, 201);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \{{modelNamespace}}\{{modelName}}  ${{modelNameSingularLowercase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{modelName}} ${{modelNameSingularLowercase}})
+    {
+        return response()->json(${{modelNameSingularLowercase}});
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \{{requestNamespace}}\{{modelName}}UpdateRequest  $request
+     * @param  \{{modelNamespace}}\{{modelName}}  ${{modelNameSingularLowercase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function update({{modelName}}UpdateRequest $request, {{modelName}} ${{modelNameSingularLowercase}})
+    {
+        ${{modelNameSingularLowercase}}->update($request->validated());
+        return response()->json(${{modelNameSingularLowercase}});
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \{{modelNamespace}}\{{modelName}}  ${{modelNameSingularLowercase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{modelName}} ${{modelNameSingularLowercase}})
+    {
+        ${{modelNameSingularLowercase}}->delete();
+        return response()->json(null, 204);
+    }
+}

@@ -1,0 +1,91 @@
+<?php
+
+namespace {{namespace}};
+
+use {{modelNamespace}}\{{modelName}};
+use Illuminate\Http\Request;
+use {{requestNamespace}}\{{modelName}}StoreRequest;
+use {{requestNamespace}}\{{modelName}}UpdateRequest;
+
+class {{modelName}}Controller extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        ${{modelNamePluralLowercase}} = {{modelName}}::latest()->paginate(10);
+        return view('{{modelNamePluralLowercase}}.index', compact('{{modelNamePluralLowercase}}'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        return view('{{modelNamePluralLowercase}}.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \{{requestNamespace}}\{{modelName}}StoreRequest  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store({{modelName}}StoreRequest $request)
+    {
+        {{modelName}}::create($request->validated());
+        return redirect()->route('{{modelNamePluralLowercase}}.index')->with('success', '{{modelName}} created successfully.');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \{{modelNamespace}}\{{modelName}}  ${{modelNameSingularLowercase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{modelName}} ${{modelNameSingularLowercase}})
+    {
+        return view('{{modelNamePluralLowercase}}.show', compact('{{modelNameSingularLowercase}}'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \{{modelNamespace}}\{{modelName}}  ${{modelNameSingularLowercase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function edit({{modelName}} ${{modelNameSingularLowercase}})
+    {
+        return view('{{modelNamePluralLowercase}}.edit', compact('{{modelNameSingularLowercase}}'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \{{requestNamespace}}\{{modelName}}UpdateRequest  $request
+     * @param  \{{modelNamespace}}\{{modelName}}  ${{modelNameSingularLowercase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function update({{modelName}}UpdateRequest $request, {{modelName}} ${{modelNameSingularLowercase}})
+    {
+        ${{modelNameSingularLowercase}}->update($request->validated());
+        return redirect()->route('{{modelNamePluralLowercase}}.index')->with('success', '{{modelName}} updated successfully.');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \{{modelNamespace}}\{{modelName}}  ${{modelNameSingularLowercase}}
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy({{modelName}} ${{modelNameSingularLowercase}})
+    {
+        ${{modelNameSingularLowercase}}->delete();
+        return redirect()->route('{{modelNamePluralLowercase}}.index')->with('success', '{{modelName}} deleted successfully.');
+    }
+}

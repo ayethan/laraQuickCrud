@@ -1,0 +1,14 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1>Edit {{modelName}}</h1>
+    <form action="{{ route('{{modelNamePluralLowercase}}.update', ${{modelNameSingularLowercase}}->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        {{formFields}}
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{{ route('{{modelNamePluralLowercase}}.index') }}" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>
+@endsection

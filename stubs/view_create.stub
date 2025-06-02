@@ -1,0 +1,13 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1>Create {{modelName}}</h1>
+    <form action="{{ route('{{modelNamePluralLowercase}}.store') }}" method="POST">
+        @csrf
+        {{formFields}}
+        <button type="submit" class="btn btn-success">Create</button>
+        <a href="{{ route('{{modelNamePluralLowercase}}.index') }}" class="btn btn-secondary">Back to List</a>
+    </form>
+</div>
+@endsection

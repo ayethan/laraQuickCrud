@@ -1,0 +1,25 @@
+{
+    "name": "atk/laraquickcrud",
+    "description": "A custom Laravel CRUD generator package",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "atk"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Atk\\LaraQuickCrud\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Atk\\LaraQuickCrud\\LaraQuickCrudServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}

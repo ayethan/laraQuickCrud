@@ -1,0 +1,45 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <h1>{{modelNamePlural}}</h1>
+    <a href="{{ route('{{modelNamePluralLowercase}}.create') }}" class="btn btn-primary mb-3">Create New {{modelName}}</a>
+
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                {{tableHeaders}}
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse (${{modelNamePluralLowercase}} as ${{modelNameSingularLowercase}})
+            <tr>
+                {{tableRows}}
+                <td>
+                    <a href="{{ route('{{modelNamePluralLowercase}}.show', ${{modelNameSingularLowercase}}->id) }}" class="btn btn-info btn-sm">View</a>
+                    <a href="{{ route('{{modelNamePluralLowercase}}.edit', ${{modelNameSingularLowercase}}->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('{{modelNamePluralLowercase}}.destroy', ${{modelNameSingularLowercase}}->id) }}" method="POST" style="display:inline-block;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            @empty
+            <tr>
+                <td colspan="{{ count(${{modelNamePluralLowercase}}) + 3 }}" class="text-center">No {{modelNamePluralLowercase}} found.</td>
+            </tr>
+            @endforelse
+        </tbody>
+    </table>
+
+    {{ ${{modelNamePluralLowercase}}->links() }}
+</div>
+@endsection
