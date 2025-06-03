@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Atk\LaraQuickCrud\Console\Commands\LaraQuickCrudCommand;
 
 
-class CrudGeneratorServiceProvider extends ServiceProvider
+class LaraQuickCrudServiceProvider extends ServiceProvider
 {
     /**
      * Register services.

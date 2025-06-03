@@ -59,7 +59,7 @@ For Laravel 11 and above, package service providers are typically auto-discovere
 ```php
 'providers' => [
     // ...
-    Atk\LaraQuickCrud\CrudGeneratorServiceProvider::class,
+    Atk\LaraQuickCrud\LaraQuickCrudServiceProvider::class,
 ],
 ```
 
