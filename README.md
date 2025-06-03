@@ -68,14 +68,14 @@ For Laravel 11 and above, package service providers are typically auto-discovere
 To customize the default settings and stub files, publish them to your application's `config` and `resources/stubs` directories:
 
 ```bash
-php artisan vendor:publish --tag=crud-generator-config
-php artisan vendor:publish --tag=crud-generator-stubs
+php artisan vendor:publish --tag=laraquickcrud-config
+php artisan vendor:publish --tag=laraquickcrud-stubs
 ```
 
 This will create:
 
-* `config/crud-generator.php`
-* `resources/stubs/crud-generator/` (containing all stub files)
+* `config/laraquickcrud.php`
+* `resources/stubs/laraquickcrud/` (containing all stub files)
 
 ---
 
@@ -167,7 +167,7 @@ This will:
 
 ## Configuration
 
-Published config file: `config/crud-generator.php`
+Published config file: `config/laraquickcrud.php`
 
 You can customize:
 
@@ -183,10 +183,10 @@ You can customize:
 ### Publishing Stubs
 
 ```bash
-php artisan vendor:publish --tag=crud-generator-stubs
+php artisan vendor:publish --tag=laraquickcrud-stubs
 ```
 
-This publishes stubs to: `resources/stubs/crud-generator/`
+This publishes stubs to: `resources/stubs/laraquickcrud/`
 
 ### Modifying Stub Files
 
